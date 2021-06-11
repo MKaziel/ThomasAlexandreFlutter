@@ -1,3 +1,6 @@
+import 'package:appdev1/fonction/variable.dart';
+import 'package:appdev1/model/color.dart';
+import 'package:appdev1/model/drawer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'ConnexionPage.dart';
@@ -33,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  var myColor;
 
   void _incrementCounter() {
     setState(() {
@@ -40,15 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void initialiseFlutterFire() async{
+  void initialiseFlutterFire() async {
     var error;
     var init;
-    try{
+
+    try {
       await Firebase.initializeApp();
       setState(() {
         init = true;
       });
-    }catch(e){
+    } catch (e) {
       setState(() {
         error = e;
       });
@@ -60,54 +65,57 @@ class _MyHomePageState extends State<MyHomePage> {
     initialiseFlutterFire();
     // TODO: implement initState
     super.initState();
+  }
 
+  void changeColor() {
+    if (myColor != couleur) {
+      setState(() {
+        myColor = couleur;
+      });
+      Navigator.pop(context);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FlatButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ConnexionPage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(1.0),
-                color: Colors.blue,
-                child: Text(
-                  'Connexion'
-                ),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => InscriptionPage()),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                margin: const EdgeInsets.all(1.0),
-                color: Colors.green,
-                child: Text(
-                    'Inscription'
-                ),
-              ),
-            ),
-          ],
+        appBar: AppBar(
+          title: Text(widget.title),
+          backgroundColor: couleur,
         ),
-      )
-    );
+        drawer: drawer(),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ConnexionPage()),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(1.0),
+                  child: Text('Connexion'),
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => InscriptionPage()),
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(1.0),
+                  child: Text('Inscription'),
+                ),
+              ),
+            ],
+          ),
+        ));
   }
 }

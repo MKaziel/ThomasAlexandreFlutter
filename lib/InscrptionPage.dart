@@ -1,4 +1,5 @@
 import 'package:appdev1/fonction/FireStore.dart';
+import 'package:appdev1/fonction/variable.dart';
 import 'package:flutter/material.dart';
 import 'ProfilPage.dart';
 
@@ -8,15 +9,13 @@ class InscriptionPage extends StatefulWidget {
     // TODO: implement createState
     return InscriptionPageState();
   }
-
 }
 
 class InscriptionPageState extends State<InscriptionPage> {
-
-  var Nom ="";
-  var Prenom="";
-  var email="";
-  var pwd="";
+  var Nom = "";
+  var Prenom = "";
+  var email = "";
+  var pwd = "";
 
   @override
   Widget build(BuildContext context) {
@@ -24,43 +23,42 @@ class InscriptionPageState extends State<InscriptionPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Page d'inscription"),
+          backgroundColor: couleur,
         ),
         body: SingleChildScrollView(
           child: Center(
               child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (event) {
-                        setState(() {
-                          email = event;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "E-Mail",
-                      ),
-                    ),
+            children: [
+              Container(
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (event) {
+                    setState(() {
+                      email = event;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "E-Mail",
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (event) {
-                        setState(() {
-                          pwd = event;
-                        });
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: "Password"
-                      ),
-                    ),
-                  ),
-                  /*Container(
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (event) {
+                    setState(() {
+                      pwd = event;
+                    });
+                  },
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Password"),
+                ),
+              ),
+              /*Container(
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -71,59 +69,55 @@ class InscriptionPageState extends State<InscriptionPage> {
                     ),
                   ),
                 ),*/
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (event) {
-                        setState(() {
-                          Prenom = event;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Prénom",
-                      ),
-                    ),
+              Container(
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (event) {
+                    setState(() {
+                      Prenom = event;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Prénom",
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(8.0),
-                    padding: const EdgeInsets.all(8.0),
-                    child: TextField(
-                      onChanged: (event) {
-                        setState(() {
-                          Nom = event;
-                        });
-                      },
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Nom",
-                      ),
-                    ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (event) {
+                    setState(() {
+                      Nom = event;
+                    });
+                  },
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Nom",
                   ),
-                  ElevatedButton(
-                    onPressed: () {
-                      /*Navigator.push(
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  /*Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ProfilPage()),
                     );*/
 
-                      //Alimentation userProfil
-                      FireStore().enregistrement(email, pwd, Nom, Prenom);
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(8.0),
-                      margin: const EdgeInsets.all(1.0),
-                      color: Colors.blue,
-                      child: Text(
-                          'Inscription'
-                      ),
-                    ),
-                  ),
-                ],
-              )
-          ),
-        )
-    );
+                  //Alimentation userProfil
+                  FireStore().enregistrement(email, pwd, Nom, Prenom);
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  margin: const EdgeInsets.all(1.0),
+                  color: Colors.blue,
+                  child: Text('Inscription'),
+                ),
+              ),
+            ],
+          )),
+        ));
   }
 }
