@@ -1,4 +1,4 @@
-import 'package:appdev1/model/FireStore.dart';
+import 'package:appdev1/fonction/FireStore.dart';
 import 'package:flutter/material.dart';
 import 'ProfilPage.dart';
 
@@ -59,7 +59,7 @@ class InscriptionPageState extends State<InscriptionPage> {
                     ),
                   ),
                 ),
-                Container(
+                /*Container(
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -69,7 +69,7 @@ class InscriptionPageState extends State<InscriptionPage> {
                         labelText: "Confirm Password"
                     ),
                   ),
-                ),
+                ),*/
                 Container(
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.all(8.0),
