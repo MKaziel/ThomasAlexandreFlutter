@@ -41,8 +41,8 @@ class ConnexionPageState extends State<ConnexionPage> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
+            ElevatedButton(
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfilPage()),

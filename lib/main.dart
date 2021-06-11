@@ -89,8 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
+            ElevatedButton(
+              onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => InscriptionPage()),

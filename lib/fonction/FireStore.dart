@@ -10,7 +10,7 @@ class FireStore{
 
 
 
-  //Connexxion
+  //Connexion
 
 
   //Enregistrement des données
@@ -19,7 +19,7 @@ class FireStore{
 
     final  resultat = await authStore.createUserWithEmailAndPassword(email: email, password: pwd);
     final user = resultat.user;
-    String id = user.uid;
+    String id = user!.uid;
     Map <String, dynamic> map = {
       "nom": Nom,
       "prenom": Prenom,
@@ -28,7 +28,13 @@ class FireStore{
     addProfil(id, map);
   }
 
-  void addProfil (String nom, Map <String, dynamic > map) {
-    FirebaseFirestore.instance.collection('Profil').doc(nom).set(map);
+  void addProfil (String uid, Map <String, dynamic > map) {
+    FirebaseFirestore.instance.collection('Profil').doc(uid).set(map);
+  }
+
+  Future <User?> connexion (String email, String password) async {
+    final result = await authStore.signInWithEmailAndPassword(email: email, password: password);
+    final User? user = result.user;
+    return user;
   }
 }

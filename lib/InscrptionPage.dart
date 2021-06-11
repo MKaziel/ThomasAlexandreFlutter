@@ -25,41 +25,42 @@ class InscriptionPageState extends State<InscriptionPage> {
         appBar: AppBar(
           title: Text("Page d'inscription"),
         ),
-        body: Center(
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (event) {
-                      setState(() {
-                        email = event;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "E-Mail",
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (event) {
-                      setState(() {
-                        pwd = event;
-                      });
-                    },
-                    obscureText: true,
-                    decoration: InputDecoration(
+        body: SingleChildScrollView(
+          child: Center(
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (event) {
+                        setState(() {
+                          email = event;
+                        });
+                      },
+                      decoration: InputDecoration(
                         border: OutlineInputBorder(),
-                        labelText: "Password"
+                        labelText: "E-Mail",
+                      ),
                     ),
                   ),
-                ),
-                /*Container(
+                  Container(
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (event) {
+                        setState(() {
+                          pwd = event;
+                        });
+                      },
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: "Password"
+                      ),
+                    ),
+                  ),
+                  /*Container(
                   margin: const EdgeInsets.all(8.0),
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
@@ -70,57 +71,58 @@ class InscriptionPageState extends State<InscriptionPage> {
                     ),
                   ),
                 ),*/
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (event) {
-                      setState(() {
-                        Prenom = event;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Prénom",
+                  Container(
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (event) {
+                        setState(() {
+                          Prenom = event;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "Prénom",
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    onChanged: (event) {
-                      setState(() {
-                        Nom = event;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Nom",
+                  Container(
+                    margin: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      onChanged: (event) {
+                        setState(() {
+                          Nom = event;
+                        });
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "Nom",
+                      ),
                     ),
                   ),
-                ),
-                InkWell(
-                  onTap: () {
-                    /*Navigator.push(
+                  ElevatedButton(
+                    onPressed: () {
+                      /*Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => ProfilPage()),
                     );*/
 
-                    //Alimentation userProfil
-                    FireStore().enregistrement(email, pwd, Nom, Prenom);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(8.0),
-                    margin: const EdgeInsets.all(1.0),
-                    color: Colors.blue,
-                    child: Text(
-                        'Inscription'
+                      //Alimentation userProfil
+                      FireStore().enregistrement(email, pwd, Nom, Prenom);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(8.0),
+                      margin: const EdgeInsets.all(1.0),
+                      color: Colors.blue,
+                      child: Text(
+                          'Inscription'
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )
+                ],
+              )
+          ),
         )
     );
   }
